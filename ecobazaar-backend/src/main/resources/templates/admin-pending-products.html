@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pending Products</title>
+</head>
+<body>
+
+<h2>Pending Products</h2>
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Details</th>
+        <th>Price</th>
+        <th>Seller</th>
+        <th>Action</th>
+    </tr>
+
+    <tr th:each="product : ${products}">
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.details}"></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product.seller.email}"></td>
+        <td>
+            <a th:href="@{/admin/approve/{id}(id=${product.id})}">
+                Approve
+            </a>
+        </td>
+    </tr>
+
+</table>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Products</title>
+</head>
+<body>
+
+<h2>My Products</h2>
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Details</th>
+        <th>Price</th>
+        <th>Carbon Impact</th>
+        <th>Eco Certified</th>
+        <th>Actions</th>
+    </tr>
+
+    <tr th:each="product : ${products}">
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.details}"></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product.carbonImpact}"></td>
+        <td th:text="${product.ecoCertified}"></td>
+
+        <td>
+            <a th:href="@{/seller/edit-product/{id}(id=${product.id})}">Edit</a>
+            |
+            <a th:href="@{/seller/delete-product/{id}(id=${product.id})}">Delete</a>
+        </td>
+    </tr>
+
+</table>
+
+</body>
+</html>
